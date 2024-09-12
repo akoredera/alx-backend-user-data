@@ -59,7 +59,7 @@ class DB:
         except NoResultFound:
             raise NoResultFound
 
-    def update_user(self, user_id: int, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         '''
         update_user detail
         '''
