@@ -45,7 +45,8 @@ try:
     print(find_user.id)
 except InvalidRequestError:
     print("Invalid")
-'''
+
+
 from db import DB
 from user import User
 
@@ -66,3 +67,10 @@ try:
     print("Password updated")
 except ValueError:
     print("Error")
+
+
+'''
+from auth import _hash_password
+
+print(_hash_password("Hello Holberton"))
+

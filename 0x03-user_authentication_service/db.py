@@ -70,3 +70,4 @@ class DB:
                 raise ValueError
             else:
                 setattr(user, key, value)
+
