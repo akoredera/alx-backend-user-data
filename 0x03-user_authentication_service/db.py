@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""DB module
+"""
+DB module
 """
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
@@ -11,7 +12,8 @@ from user import Base, User
 
 
 class DB:
-    """DB class
+    """
+    DB class
     """
 
     def __init__(self) -> None:
@@ -24,7 +26,8 @@ class DB:
 
     @property
     def _session(self) -> Session:
-        """Memoized session object
+        """
+        Memoized session object
         """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
@@ -43,6 +46,11 @@ class DB:
         return new_user
 
     def find_user_by(self, **kwargs):
+        '''
+        This method takes in arbitrary keyword arguments and returns
+        the first row found in the users table as filtered
+        by the method’s input arguments
+        '''
         for key, value in kwargs.items():
             if hasattr(User, key):
                 pass
