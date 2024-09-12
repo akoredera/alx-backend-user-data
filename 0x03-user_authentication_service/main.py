@@ -18,7 +18,7 @@ print(user_1.id)
 
 user_2 = my_db.add_user("test1@test.com", "SuperHashedPwd1")
 print(user_2.id)
-'''
+
 from db import DB
 from user import User
 
@@ -45,3 +45,24 @@ try:
     print(find_user.id)
 except InvalidRequestError:
     print("Invalid")
+'''
+from db import DB
+from user import User
+
+from sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.orm.exc import NoResultFound
+
+
+my_db = DB()
+
+email = 'test@test.com'
+hashed_password = "hashedPwd"
+
+user = my_db.add_user(email, hashed_password)
+print(user.id)
+
+try:
+    my_db.update_user(user.id, hashed_password='NewPwd')
+    print("Password updated")
+except ValueError:
+    print("Error")
