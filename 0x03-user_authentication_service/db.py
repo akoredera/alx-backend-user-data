@@ -34,6 +34,7 @@ class DB:
         '''
         method should save the user to the database
         '''
+        '''
         try:
             user = User(email=email, hashed_password=hashed_password)
             self._session.add(user)
@@ -41,5 +42,8 @@ class DB:
         except Exception:
             self._session.rollback()
             user = None
+        '''
+        user = User(email=email, hashed_password=hashed_password)
+        self._session.add(user)
+        self._session.commit()
         return user
-
