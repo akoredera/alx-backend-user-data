@@ -52,10 +52,8 @@ class DB:
         by the method’s input arguments
         '''
         for key, value in kwargs.items():
-            if hasattr(User, key):
-                pass
-            else:
-                raise InvalidRequestError()
+            if not hasattr(User, key):
+                raise InvalidRequestError
         try:
             return self._session.query(User).filter_by(**kwargs).one()
         except Exception:
