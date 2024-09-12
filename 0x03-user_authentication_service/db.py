@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """DB module
 """
-
+from sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -40,3 +41,14 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
+
+    def find_user_by(self, **kwargs):
+        for key, value in kwargs.items():
+            if hasattr(User, key):
+                pass
+            else:
+                raise InvalidRequestError()
+        try:
+            return self._session.query(User).filter_by(**kwargs).one()
+        except Exception:
+            raise NoResultFound
