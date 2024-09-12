@@ -34,7 +34,7 @@ class DB:
         '''
         method should save the user to the database
         '''
-        if not email and hashed_password:
+        if not email or not hashed_password:
             return
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
