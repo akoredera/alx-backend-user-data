@@ -7,6 +7,7 @@ from user import User
 from db import DB
 from sqlalchemy.orm.exc import NoResultFound
 
+
 def _hash_password(password: str) -> bytes:
     '''
     method that takes in a password string arguments and returns bytes.
@@ -29,6 +30,6 @@ class Auth:
         '''register new user'''
         try:
             self._db.find_user_by(email=email)
+            raise ValueError("User {} already exists".format(email))
         except NoResultFound:
             self._db.add_user(email, _hash_password(password))
-        raise ValueError("User {} already exists".format(email))

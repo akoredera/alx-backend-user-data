@@ -2,7 +2,6 @@
 """
 Main file
 """
-'''
 from db import DB
 from user import User
 
@@ -69,7 +68,6 @@ except ValueError:
     print("Error")
 
 
-'''
 from auth import _hash_password
 
 print(_hash_password("Hello Holberton"))
