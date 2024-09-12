@@ -66,7 +66,7 @@ class DB:
         user = self.find_user_by(id=user_id)
         data = 0
         for key, value in kwargs.items():
-            if hasattr(user, key):
-                setattr(user, key, value)
-            else:
+            if not hasattr(user, key):
                 raise ValueError
+            else:
+                setattr(user, key, value)
